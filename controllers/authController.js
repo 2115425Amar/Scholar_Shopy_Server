@@ -255,3 +255,29 @@ export const orderStatusController = async (req, res) => {
     });
   }
 };
+
+
+
+//chatbot
+// export const chatController=async(req,res)=>{
+//   try{
+//     const {email,answer,newPassword}=req.body  
+
+//      // Validation
+//      if (!email || !answer || !newPassword) {
+//       res.status(400).send({
+//         message: "Email, answer, and new password are required",
+//       });
+//       return;
+//     }
+
+//   } 
+//   catch (error) {
+//     console.log(error);
+//     res.status(500).send({
+//       success: false,
+//       message: "something went wrong",
+//       error,
+//     });
+//   }
+// };

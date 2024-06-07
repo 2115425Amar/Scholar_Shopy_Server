@@ -22,6 +22,7 @@ import ProductDetails from './pages/ProductDetails';
 import Categories from './pages/Categories';
 import CategoryProduct from './pages/CategoryProduct';
 import CartPage from './pages/CartPage';
+import Chatbot from './pages/Chatbot';
 // import Search from './pages/search';
 //  import Search from './pages/Search.js';
 
@@ -54,6 +55,7 @@ function App() {
        {/* <Route path='/dashboard' element={<PrivateRoute/>}>
         <Route path="user" element={<Dashboard/>}/>
       </Route> */}
+
       
       <Route path='/dashboard' element={<AdminRoute/>}>
         <Route path="admin" element={<AdminDashboard/>}/>
@@ -62,6 +64,9 @@ function App() {
         <Route path="admin/products" element={<Products />} />
         <Route path="admin/users" element={<Users />} />
       </Route> 
+
+      //chatbot
+        <Route path="/chatbot" element={<Chatbot />} />
 
     </Routes>
     </>
