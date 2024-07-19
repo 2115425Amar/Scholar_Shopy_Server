@@ -8,14 +8,13 @@ import { SearchProvider } from "./context/search";
 import { CartProvider, cartProvider } from "./context/cart";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <AuthProvider>
+  <AuthProvider>
     <SearchProvider>
-    <CartProvider>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-    </CartProvider>
-   
+      <CartProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartProvider>
     </SearchProvider>
-    </AuthProvider>
+  </AuthProvider>
 );

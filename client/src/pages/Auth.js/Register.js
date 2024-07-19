@@ -14,7 +14,6 @@ const Register = () => {
   const [answer, setAnswer] = useState("");
   const [address, setAddress] = useState("");
 
-
   const navigate = useNavigate();
 
   // Form function
@@ -27,21 +26,26 @@ const Register = () => {
       // console.log(`${process.env.REACT_APP_API}/api/v1/auth/Register`);
 
       // Make the POST request
-      const res = await axios.post('/api/v1/auth/Register', { name, email, password, phone, address, answer });
+      const res = await axios.post("/api/v1/auth/Register", {
+        name,
+        email,
+        password,
+        phone,
+        address,
+        answer,
+      });
       // Check the response and show appropriate toast messages
       if (res && res.data.success) {
         toast.success(res.data.message);
         // Redirect to the login page after successful registration
-        navigate('/login');
-      }
-      else {
+        navigate("/login");
+      } else {
         toast.error(res.data.message);
       }
-    }
-    catch (error) {
-      console.error('Error during registration:', error);
+    } catch (error) {
+      console.error("Error during registration:", error);
       // Handle error and show an appropriate toast message
-      toast.error('An error occurred during registration.');
+      toast.error("An error occurred during registration.");
     }
   };
 
@@ -132,10 +136,7 @@ const Register = () => {
     //     </form>
     //   </div>
 
-
-
-
-<Layout>
+    <Layout>
       <section className="vh-80" style={{ backgroundColor: "#eee" }}>
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -144,7 +145,9 @@ const Register = () => {
                 <div className="card-body p-md-5">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                      <p className="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">Sign up</p>
+                      <p className="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">
+                        Sign up
+                      </p>
                       <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-user fa-lg me-3 fa-fw" />
@@ -158,8 +161,6 @@ const Register = () => {
                               placeholder="Enter Your Name"
                               required
                             />
-
-
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -174,7 +175,6 @@ const Register = () => {
                               placeholder="Enter Your email"
                               required
                             />
-
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -203,7 +203,6 @@ const Register = () => {
                               placeholder="Enter Your phone"
                               required
                             />
-
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -218,7 +217,6 @@ const Register = () => {
                               placeholder="Enter Your  Address"
                               required
                             />
-
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -233,7 +231,6 @@ const Register = () => {
                               placeholder="Your Best Friend Name?"
                               required
                             />
-
                           </div>
                         </div>
 
@@ -244,16 +241,21 @@ const Register = () => {
                             defaultValue=""
                             id="form2Example3c"
                           />
-                          <label className="form-check-label" htmlFor="form2Example3">
+                          <label
+                            className="form-check-label"
+                            htmlFor="form2Example3"
+                          >
                             I agree all statements in{" "}
                             <a href="#!">Terms of service</a>
                           </label>
                         </div>
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button  className="btn btn-primary btn-lg" type="submit">
+                          <button
+                            className="btn btn-primary btn-lg"
+                            type="submit"
+                          >
                             Register
                           </button>
-
                         </div>
                       </form>
                     </div>
@@ -264,7 +266,6 @@ const Register = () => {
                         alt="Sample"
                       /> */}
                       <Lottie animationData={ContactAnimation} />
-
                     </div>
                   </div>
                 </div>
@@ -273,8 +274,6 @@ const Register = () => {
           </div>
         </div>
       </section>
-
-
     </Layout>
   );
 };
