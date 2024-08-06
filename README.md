@@ -4,6 +4,12 @@
 The Student Marketplace Platform is a comprehensive solution designed to facilitate the buying and selling of second-hand items among students. The platform provides secure and efficient functionalities for users to list, search, and purchase items, ensuring a seamless user experience.
 
 ## Features
+
+![alt text](<Screenshot (10).png>)
+![alt text](<Screenshot (11).png>)
+![alt text](<Screenshot (12).png>)
+![alt text](<Screenshot (13).png>)
+
 <!-- ### Integration with Gemini API
 - **Real-Time Market Pricing**: Provides users with real-time market pricing data to help them make informed purchasing decisions based on current market trends.
 
