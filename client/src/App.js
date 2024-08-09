@@ -23,7 +23,7 @@ import Categories from './pages/Categories';
 import CategoryProduct from './pages/CategoryProduct';
 import CartPage from './pages/CartPage';
 import Chatbot from './pages/Chatbot';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import Search from './pages/search';
 //  import Search from './pages/Search.js';
 

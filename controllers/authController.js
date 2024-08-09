@@ -113,9 +113,9 @@ export const loginController = async (req, res) => {
 
 
 //forgot password
-export const forgotPasswordController=async(req,res)=>{
+export const forgotPasswordController = async (req,res)=>{
   try{
-    const {email,answer,newPassword}=req.body  
+    const {email,answer,newPassword}=req.body;  
 
      // Validation
      if (!email || !answer || !newPassword) {
@@ -134,7 +134,7 @@ export const forgotPasswordController=async(req,res)=>{
     });
   }
  //ResetPassword
- const hashed = await hashPassword({newPassword});
+ const hashed = await hashPassword(newPassword);
  await userModel.findByIdAndUpdate(user._id,{password:hashed})
  res.status(200).send({
    success:true,
