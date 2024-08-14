@@ -189,10 +189,13 @@ export const updateProductController = async (req, res) => {
 export const productFiltersController = async (req, res) => {
   try {
     const { checked, radio } = req.body;
+
     let args = {};
     if (checked.length > 0) args.category = checked;
-    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };
-    const products = await productModel.find(args);
+    if (radio.length) args.price = { $gte: radio[0], $lte: radio[1] };  //[0, 500]
+    //find
+    const products = await productModel.find(args);   
+
     res.status(200).send({
       success: true,
       products,
@@ -201,7 +204,7 @@ export const productFiltersController = async (req, res) => {
     console.log(error);
     res.status(400).send({
       success: false,
-      message: "Error WHile Filtering Products",
+      message: "Error While Filtering Products",
       error,
     });
   }
@@ -210,7 +213,7 @@ export const productFiltersController = async (req, res) => {
 // product count
 export const productCountController = async (req, res) => {
   try {
-    const total = await productModel.find({}).estimatedDocumentCount();
+    const total = await productModel.find({}).estimatedDocumentCount(); 
     res.status(200).send({
       success: true,
       total,
@@ -225,13 +228,12 @@ export const productCountController = async (req, res) => {
   }
 };
 
-// product list base on page
+// product list based on page
 export const productListController = async (req, res) => {
   try {
     const perPage = 2;
     const page = req.params.page ? req.params.page : 1;
-    const products = await productModel
-      .find({})
+    const products = await productModel.find({})
       .select("-photo")
       .skip((page - 1) * perPage)
       .limit(perPage)
@@ -254,15 +256,14 @@ export const productListController = async (req, res) => {
 // search product
 export const searchProductController = async (req, res) => {
   try {
-    const {keyword} =req.params
+    const {keyword} = req.params;
     const results = await productModel.find({
       $or :[
-        {name:{$regex:keyword, $options:"i"}},
+        {name:{$regex:keyword, $options:"i"}},  //option:"i" means case sensitive ko delete kr denge
         {description:{$regex:keyword, $options:"i"}}
       ]
     }).select("-photo");
     res.json(results)
-    
   } catch (error) {
     console.log(error);
     res.status(400).send({
@@ -273,6 +274,10 @@ export const searchProductController = async (req, res) => {
   }
 };
 
+
+
+
+
 // similar products
 export const realtedProductController = async (req, res) => {
   try {
@@ -280,7 +285,7 @@ export const realtedProductController = async (req, res) => {
     const products = await productModel
       .find({
         category: cid,
-        _id: { $ne: pid },
+        _id: { $ne: pid },  //pid ko dobara include mat kro
       })
       .select("-photo")
       .limit(3)
@@ -293,11 +298,14 @@ export const realtedProductController = async (req, res) => {
     console.log(error);
     res.status(400).send({
       success: false,
-      message: "error while geting related product",
+      message: "Error while geting related product",
       error,
     });
   }
 };
+
+
+
 
 // get product by catgory
 export const productCategoryController = async (req, res) => {
