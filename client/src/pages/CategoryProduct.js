@@ -29,7 +29,8 @@ const CategoryProduct = () => {
         <div className="row">
           <div className="col-md-9 offset-1">
             <div className="d-flex flex-wrap">
-              {products?.map((p) => (
+              {
+              products?.map((p) => (
                 <div
                   className="card m-2"
                   style={{ width: "18rem" }}

@@ -6,6 +6,7 @@ import connectDB from "./config/db.mjs";
 import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import emailRoute from "./routes/emailRoute.js";
 import cors from "cors";
 
 //to deploy 
@@ -36,6 +37,8 @@ app.use(express.static(path.join(__dirname, './client/build')))
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
+// console.log(emailRoute);
+app.use("/api/v1/email", emailRoute);
 
 
 // //rest api

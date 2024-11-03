@@ -31,7 +31,7 @@ export const registerController = async (req, res) => {
     if (exisitingUser) {
       return res.status(200).send({
         success: false,
-        message: "Already Register please login",
+        message: "Already Registered please login",
       });
     }
 
@@ -45,7 +45,8 @@ export const registerController = async (req, res) => {
       message: "User Register Successfully",
       user,
     });
-  } catch (error) {
+  }
+   catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
@@ -54,6 +55,7 @@ export const registerController = async (req, res) => {
     });
   }
 };
+
 
 //POST LOGIN
 export const loginController = async (req, res) => {
@@ -164,7 +166,7 @@ export const testController = (req, res) => {
 };
 
 
-//update prfole
+//update prfile
 export const updateProfileController = async (req, res) => {
   try {
     const { name, email, password, address, phone } = req.body;

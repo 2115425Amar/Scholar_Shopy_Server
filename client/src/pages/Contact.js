@@ -1,42 +1,113 @@
-import React from 'react';
-import Layout from '../components/Layout/Layout'; // Import your Layout component
-
+import React, { useState } from 'react';
+import Layout from '../components/Layout/Layout';
+import axios from 'axios';
 
 const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    role: '',
+    reason: ''
+  });
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      await axios.post('/api/v1/email/request-admin-access', formData);
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error sending request', error);
+      setError('There was an issue submitting your request. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout>
-    
-      <div className="contact-container">
-        {/* Half page with a big image */}
-
-        <div className="contact-image">
-        <img src="https://images.unsplash.com/photo-1499159058454-75067059248a?auto=format&fit=crop&q=80&w=2071&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt="" style={{height:"371px" ,width:"720px"}} />
-
-        </div>
-
-        {/* Half page with contact information */}
-        <div className="contact-info">
-          <h1>Contact Us</h1>
-          <hr className="divider" />
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum vel ipsa asperiores dolorum nesciunt vitae, cumque ut suscipit maiores in facilis, voluptatibus distinctio odit.</p>
-          <div className="contact-items-container">
-            <div className="contact-item">
-              <i className="fas fa-envelope"></i>
-              <span>Email: amar2115425@akgec.ac.in</span>
+      <section className="py-4 bg-light">
+        <div className="container">
+          <div className="row align-items-center gy-5">
+            <div className="col-lg-6">
+              {/* Optional Lottie animation here */}
             </div>
-            <div className="contact-item">
-              <i className="fas fa-phone"></i>
-              <span>Phone: 8601082965</span>
-            </div>
-            <div className="contact-item">
-              <i className="fas fa-headset"></i>
-              <span>Customer Care: 6393833856</span>
+            <div className="col-lg-6">
+              <div className="row gy-4">
+                <div className="mt-5">
+                  <p className="text-secondary">
+                    If you need admin privileges, please fill out the form below with the necessary details.
+                  </p>
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        id="name"
+                        className="form-control"
+                        placeholder="Your Name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <input
+                        type="email"
+                        id="email"
+                        className="form-control"
+                        placeholder="Your Email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <input
+                        type="text"
+                        id="role"
+                        className="form-control"
+                        placeholder="Your Role or Affiliation"
+                        required
+                        value={formData.role}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <textarea
+                        id="reason"
+                        className="form-control"
+                        rows="4"
+                        placeholder="Describe why you need admin access"
+                        required
+                        value={formData.reason}
+                        onChange={handleChange}
+                      ></textarea>
+                    </div>
+                    <button type="submit" className="btn btn-success btn-md" disabled={loading}>
+                      {loading ? 'Submitting...' : 'Request Admin Access'}
+                    </button>
+                    {submitted && (
+                      <p className="mt-3 text-success">Your request has been submitted successfully!</p>
+                    )}
+                    {error && (
+                      <p className="mt-3 text-danger">{error}</p>
+                    )}
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
+      </section>
     </Layout>
   );
 };
