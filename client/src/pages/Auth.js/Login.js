@@ -62,8 +62,8 @@ const Login = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.error('Error during registration:', error);
-      toast.error('An error occurred during registration.');
+      console.error('Error during login:', error);
+      toast.error('An error occurred during login.');
     }
   };
 

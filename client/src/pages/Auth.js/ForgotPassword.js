@@ -37,8 +37,8 @@ const ForgotPassword = () => {
                 toast.error(res.data.message);
             }
         } catch (error) {
-            console.error('Error during registration:', error);
-            toast.error('An error occurred during registration.');
+            console.error('Error during reset password:', error);
+            toast.error('An error occurred during reset password.');
         }
     }
     return (
