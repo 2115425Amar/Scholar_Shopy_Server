@@ -5,6 +5,6 @@ import { sendAdminAccessRequest } from "../controllers/emailController";
 const router = express.Router();
 
 // Route for handling admin access requests
-router.post('/request-admin-access', sendAdminAccessRequest);
+router.post("/request-admin-access", sendAdminAccessRequest);
 
 export default router;

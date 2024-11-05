@@ -1,10 +1,9 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+import nodemailer from 'nodemailer';
 
 // Function to handle sending the email
 export const sendAdminAccessRequest = async (req, res) => {
   const { name, email, role, reason } = req.body;
-  console.log(process.env.EMAIL_USER, process.env.RECIPIENT_EMAIL);
+  // console.log(process.env.EMAIL_USER, process.env.RECIPIENT_EMAIL);
 
   // Configure the transporter using SMTP
   const transporter = nodemailer.createTransport({
