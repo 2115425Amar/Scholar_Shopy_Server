@@ -1,22 +1,11 @@
-# Student Marketplace Platform
-
 ## Overview
-The Student Marketplace Platform is a comprehensive solution designed to facilitate the buying and selling of second-hand items among students. The platform provides secure and efficient functionalities for users to list, search, and purchase items, ensuring a seamless user experience.
+
+# Schola₹Shopy: A Second-Hand Marketplace for College Students
+
+## Project Overview
+**Schola₹Shopy** The Student Marketplace Platform is a comprehensive solution designed to facilitate the buying and selling of second-hand items among students. The platform provides secure and efficient functionalities for users to list, search, and purchase items, ensuring a seamless user experience.
 
 ## Features
-<!-- ![alt text](E0.png)
-![alt text](E2.png)
-![alt text](E3.png)
-![alt text](E4.png)
-![alt text](E5.png)
-![alt text](E6.png)
-![alt text](E7.png)
-![alt text](E8.png)
-![alt text](E9.png)
-![alt text](E10.png)
-![alt text](E12.png)
-![alt text](E13.png)
-![alt text](E14.png) -->
 
 ![alt text](ss/E0.png)
 ![alt text](ss/E2.png)
@@ -32,28 +21,12 @@ The Student Marketplace Platform is a comprehensive solution designed to facilit
 ![alt text](ss/E13.png)
 ![alt text](ss/E14.png)
 
-<!-- ### Integration with Gemini API
-- **Real-Time Market Pricing**: Provides users with real-time market pricing data to help them make informed purchasing decisions based on current market trends.
-
-### Secure Payment Gateways
-- **Razor Pay Integration**: Ensures secure transaction handling.
-- **PCI DSS Compliance**: All payment information is securely processed in compliance with PCI DSS standards. -->
 
 ### User Authentication and Security
-<!-- - **OAuth**: Secure login through Google Authentication 2.0. -->
 - **JWT**: Maintains secure sessions with JSON Web Tokens.
 - **SSL/TLS Encryption**: Ensures all data exchanged between client and server is encrypted.
 - **Bcrypt**: Passwords are hashed for added security.
 
-<!-- ### Geolocation Services
-- **Google Maps API**: Identifies user locations and displays producers based on proximity to the user. -->
-
-<!-- ### AI Algorithms for Personalization and Recommendations
-- **Machine Learning Models**: Analyze user behavior and preferences to offer personalized product recommendations.
-- **Content Filtering**: Provides tailored recommendations based on user inputs, such as dietary restrictions and preferred food types. -->
-<!-- 
-### Real-Time Chat Functionality
-- **Direct Communication**: Facilitates direct communication between buyers and sellers for negotiation, verification, and information exchange. -->
 
 ### User and Admin Dashboards
 - **User Dashboards**: Allow users to manage their orders, profiles, and inventory.
@@ -69,6 +42,30 @@ The Student Marketplace Platform is a comprehensive solution designed to facilit
 - **Mobile Application**: Develop a mobile app to provide on-the-go access to the platform.
 - **Enhanced Security Features**: Implement advanced security measures to further protect user data and transactions.
 - **Additional Payment Gateways**: Integrate more payment gateways to offer users a variety of transaction options.
+
+## Technical Stack
+### **Frontend**
+- React.js: Responsive and dynamic user interface.
+- Context API: Efficient state management.
+
+### **Backend**
+- Node.js with Express: RESTful APIs and server logic.
+- MongoDB: Flexible and scalable data storage.
+
+### **Integration (Future Scope)**
+- Razorpay API: Secure payment gateway.
+- Google Maps API: Geolocation for better usability.
+- Machine Learning Models: For personalized recommendations and inventory analytics.
+
+
+## Societal Impact
+- **Sustainability**:
+  - Reducing waste by promoting reuse.
+  - Lowering environmental pollution and resource consumption.
+- **Economic Benefits**:
+  - Cost-saving options for students.
+  - Contribution to a circular economy.
+
 
 ## Getting Started
 To get a local copy up and running, follow these simple steps.
@@ -120,7 +117,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 Amar Gupta - [amar8601082@gmail.com](mailto:amar8601082@gmail.com)
 
-Project Link: [https://github.com/yourusername/student-marketplace-platform](https://github.com/2115425Amar/Ecommerce-2-MERN-.git)
+Project Link: [https://github.com/2115425Amar/Ecommerce-2-MERN-](https://github.com/2115425Amar/Ecommerce-2-MERN-.git)
 
 ---
+
 
