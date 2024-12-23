@@ -1,0 +1,62 @@
+JWT (JSON Web Token) ka kaam hota hai securely information ko transmit karna, khaaskar **authentication** aur **authorization** ke liye. Ye ek token-based mechanism hai jo user aur server ke beech ka connection banata hai, bina server pe session store kiye.  
+
+### JWT kya karta hai?  
+
+#### 1. **Authentication (Pehchaan Dena)**  
+- Jab user login karta hai, server ek JWT generate karta hai aur client (browser ya app) ko deta hai.  
+- Client is token ko save karta hai (localStorage ya cookie mein) aur har request ke saath bhejta hai, taki server samajh jaye ki ye user authenticated hai.
+
+#### 2. **Authorization (Permission Dena)**  
+- JWT ke andar user ki permissions (admin, editor, etc.) hoti hain.  
+- Jab client server se data maangta hai, server JWT verify karta hai aur user ke permissions ke hisaab se access deta hai.
+
+#### 3. **Statelessness (Session-Free)**  
+- JWT ke through, server ko user ka session ya state yaad rakhne ki zarurat nahi hoti.  
+- Token ke andar hi sari information hoti hai jo server ko user ko verify karne ke liye chahiye.
+
+#### 4. **Data Integrity (Data ki Security)**  
+- JWT sign hota hai ek secret ya private key se, jo ensure karta hai ki token ke saath chhed-chhaad nahi ki gayi hai.  
+- Agar token valid sign ke bina ho, server usse reject kar deta hai.
+
+---
+
+### JWT ka Structure  
+JWT teen parts mein hota hai: **Header.Payload.Signature**  
+
+#### 1. **Header**  
+Token ke type (JWT) aur signing algorithm ka information.  
+```json
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+#### 2. **Payload**  
+Ye user ke details (claims) rakhta hai, jaise user ID, role, aur expiry.  
+```json
+{
+  "sub": "1234567890",
+  "name": "Rahul",
+  "admin": true,
+  "iat": 1516239022
+}
+```
+
+#### 3. **Signature**  
+Iska kaam token ki authenticity ko ensure karna hai. Signature banane ka formula:  
+```
+HMACSHA256(
+  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  secret
+)
+```
+
+---
+
+### JWT kaha use hota hai?  
+1. **Single Sign-On (SSO):** Ek baar login karke multiple apps ko access karna.  
+2. **API Authentication:** Secure tarike se client aur server ka connection banata hai.  
+3. **Microservices:** User credentials aur permissions ko propagate karna.  
+
+Agar aapko JWT implement karne ki process chahiye, to bataiye! 😊

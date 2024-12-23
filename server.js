@@ -6,7 +6,7 @@ import connectDB from "./config/db.mjs";
 import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
-import emailRoute from "./routes/emailRoute.js";
+// import emailRoute from "./routes/emailRoute.js";
 import cors from "cors";
 
 //to deploy 
