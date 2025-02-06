@@ -15,7 +15,7 @@ export const createCategoryController = async (req, res) => {
       });
     }
 
-    const category = await new categoryModel({name,slug: slugify(name),}).save();
+    const category = await new categoryModel({name, slug: slugify(name),}).save();
     res.status(201).send({
       success: true,
       message: "new category created",
@@ -35,11 +35,11 @@ export const createCategoryController = async (req, res) => {
 //update category
 export const updateCategoryController = async (req, res) => {
   try {
-    const { id } = req.params;          //from url
+    const { id } =   req.params;          //from url  (each category having unique id)
     const { name } = req.body;
+
     //update by id and update name
-    const category = await categoryModel.findByIdAndUpdate(
-      id, { name, slug: slugify(name) },{ new: true });
+    const category = await categoryModel.findByIdAndUpdate(id, { name, slug: slugify(name) },{ new: true });
     res.status(200).send({
       success: true,
       messsage: "Category Updated Successfully",
@@ -82,7 +82,7 @@ export const singleCategoryController = async (req, res) => {
 
     res.status(200).send({
       success: true,
-      message: "Get SIngle Category SUccessfully",
+      message: "Get Single Category Successfully",
       category,
     });
   } catch (error) {
@@ -103,14 +103,16 @@ export const deleteCategoryController = async (req, res) => {
     await categoryModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,
-      message: "Categry Deleted Successfully",
+      message: "Category Deleted Successfully",
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "error while deleting category",
+      message: "Error while deleting category",
       error,
     });
   }
 };
+
+

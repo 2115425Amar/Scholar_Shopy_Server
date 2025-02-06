@@ -5,7 +5,7 @@ import slugify from "slugify";
 
 export const createProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } = req.fields;//contains non-file fields
+    const { name, description, price, category, quantity, shipping } = req.fields;     //contains non-file fields
     const { photo } = req.files; //contain files
 
     //validation
@@ -35,6 +35,7 @@ export const createProductController = async (req, res) => {
     }
 
     await products.save();
+
     res.status(201).send({
       success: true,
       message: "Product Created Successfully",
@@ -95,7 +96,7 @@ export const getSingleProductController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Eror while getitng single product",
+      message: "Error while getitng single product",
       error,
     });
   }
@@ -114,11 +115,12 @@ export const productPhotoController = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Erorr while getting photo",
+      message: "Error while getting image",
       error,
     });
   }
 };
+
 
 //delete product
 export const deleteProductController = async (req, res) => {
@@ -138,12 +140,13 @@ export const deleteProductController = async (req, res) => {
   }
 };
 
+
 //update product
 export const updateProductController = async (req, res) => {
   try {
     const { name, description, price, category, quantity, shipping } = req.fields;
     const { photo } = req.files;
-    //alidation
+    //validation
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -165,11 +168,14 @@ export const updateProductController = async (req, res) => {
       { ...req.fields, slug: slugify(name) },
       { new: true }
     );
+
     if (photo) {
       products.photo.data = fs.readFileSync(photo.path);
       products.photo.contentType = photo.type;
     }
+
     await products.save();
+    
     res.status(201).send({
       success: true,
       message: "Product Updated Successfully",
@@ -246,7 +252,7 @@ export const productListController = async (req, res) => {
     console.log(error);
     res.status(400).send({
       success: false,
-      message: "error in per page ctrl",
+      message: "Error in per page ctrl",
       error,
     });
   }
