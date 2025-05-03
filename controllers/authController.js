@@ -227,7 +227,6 @@ export const getOrdersController = async (req, res) => {
     if (!req.user || !req.user._id) {
       return res.status(400).send({ success: false, message: "User not authenticated" });
     }
-
     // This is a MongoDB query using Mongoose that fetches all orders where the buyer field matches req.user._id
     const orders = await orderModel.find({ buyer: req.user._id })
     .populate("products", "-photo").populate("buyer", "name");
