@@ -1,0 +1,13 @@
+# Contents of the file: .dockerignore
+
+node_modules
+npm-debug.log
+client/build
+.git
+.gitignore
+Dockerfile
+README.md
+package-lock.json
+*.log
+*.env
+*.DS_Store
