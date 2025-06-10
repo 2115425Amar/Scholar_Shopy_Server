@@ -29,6 +29,10 @@ export const createProductController = async (req, res) => {
     const products = new productModel({ ...req.fields, slug:slugify(name) });
     
     //photo validation
+    // fs.readFileSync(photo.path) reads the image file into a Buffer from the temporary uploaded file path on the server.
+    // The photo binary data is stored directly in the products.photo.data field.
+    // The MIME type (e.g., "image/jpeg") is stored in products.photo.contentType.
+
     if (photo) {
       products.photo.data = fs.readFileSync(photo.path);
       products.photo.contentType = photo.type;
@@ -106,6 +110,7 @@ export const getSingleProductController = async (req, res) => {
 // get photo
 export const productPhotoController = async (req, res) => {
   try {
+    // This endpoint reads the stored image binary from MongoDB and sends it with the correct content-type, so the frontend can display it.
     const product = await productModel.findById(req.params.pid).select("photo");   //pid==product id
     if (product.photo.data) {
       res.set("Content-type", product.photo.contentType);
