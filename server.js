@@ -40,7 +40,6 @@ app.use("/api/v1/product", productRoutes);
 // console.log(emailRoute);
 // app.use("/api/v1/email", emailRoute);
 
-
 // //rest api
 // app.get("/", (req, res) => {
 //   res.send("<h1>Welcome to scholarshoppy</h1>");

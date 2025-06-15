@@ -33,7 +33,8 @@
     "react-dotenv": "^0.1.3",
     "react-helmet-async": "^1.3.0",
     "react-icons": "^4.7.1",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "stripe": "^18.2.1"
   },
   "devDependencies": {
     "webpack-dev-server": "^4.15.1"

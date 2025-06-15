@@ -12,6 +12,9 @@ import {
   realtedProductController,
   searchProductController,
   updateProductController,
+  // braintreeTokenController,
+  // brainTreePaymentController,
+  stripePaymentController
 } from "../controllers/productController.js";
 
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
@@ -56,6 +59,16 @@ router.get("/related-product/:pid/:cid", realtedProductController);
 
 //category wise product
 router.get("/product-category/:slug", productCategoryController);
+
+
+// //payments routes
+// //token
+// router.get("/braintree/token", braintreeTokenController);
+
+// //payments
+// router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
+
+router.post("/payment", requireSignIn, stripePaymentController);
 
 
 export default router;
