@@ -257,11 +257,11 @@ export const productCountController = async (req, res) => {
 export const productListController = async (req, res) => {
   try {
     const perPage = 8;
-    const page = req.params.page ? req.params.page : 1;
+    const page = req.params.page ? req.params.page : 1;    //Receives a page number like 1, 2, etc.
     const products = await productModel.find({})
       .select("-photo")
-      .skip((page - 1) * perPage)
-      .limit(perPage)
+      .skip((page - 1) * perPage)  // skip already loaded items
+      .limit(perPage)              // load only next 8
       .sort({ createdAt: -1 });
     res.status(200).send({
       success: true,
@@ -405,8 +405,7 @@ export const productCategoryController = async (req, res) => {
 
 
 export const stripePaymentController = async (req, res) => {
-  console.log("✅ stripePaymentController hit");
-
+  console.log("stripePaymentController hit");
   try {
     const { cart } = req.body;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -420,6 +419,7 @@ export const stripePaymentController = async (req, res) => {
       quantity: 1,
     }));
 
+    // Backend uses the cart to create a Stripe Checkout session.
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items,
@@ -430,7 +430,7 @@ export const stripePaymentController = async (req, res) => {
         cart: JSON.stringify(cart),
       },
     });
-
+    // Backend sends the session ID back.
     res.status(200).json({ id: session.id });
   } catch (error) {
     console.error("Stripe Checkout Error:", error.message);
