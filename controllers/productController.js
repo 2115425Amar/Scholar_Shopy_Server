@@ -405,9 +405,10 @@ export const productCategoryController = async (req, res) => {
 
 
 export const stripePaymentController = async (req, res) => {
-  console.log("stripePaymentController hit");
+  // console.log("stripePaymentController hit");
   try {
     const { cart } = req.body;
+    // const { cart, buyerEmail } = req.body;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const line_items = cart.map((item) => ({
@@ -427,7 +428,9 @@ export const stripePaymentController = async (req, res) => {
       success_url: `${process.env.CLIENT_URL}/home`,
       cancel_url: `${process.env.CLIENT_URL}/cart`,
       metadata: {
-        cart: JSON.stringify(cart),
+        // cart: JSON.stringify(cart),
+        productIds: cart.map((item) => item._id).join(","), // ✅ limit within 500 characters
+        // buyerEmail, // Optional
       },
     });
     // Backend sends the session ID back.
@@ -436,4 +439,52 @@ export const stripePaymentController = async (req, res) => {
     console.error("Stripe Checkout Error:", error.message);
     res.status(500).json({ error: "Stripe session creation failed" });
   }
+};
+
+
+
+//  Stripe Webhook to Save Order
+// https://ecommerce-2-mern.onrender.com/api/v1/product/stripe-webhook
+
+// Stripe Webhook (must use raw body middleware)
+export const stripeWebhookController = async (req, res) => {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  const sig = req.headers["stripe-signature"];
+
+  let event;
+
+  try {
+    event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
+  } catch (err) {
+    console.error("⚠️  Webhook signature verification failed.", err.message);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+
+  // ✅ When payment is successful
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
+    const productIds = session.metadata?.productIds?.split(",") || [];
+    const buyerEmail = session.metadata?.buyerEmail || "guest";
+
+    try {
+      const products = await productModel.find({
+        _id: { $in: productIds },
+      });
+
+      const newOrder = new orderModel({
+        products: products.map((p) => p._id),
+        payment: session,
+        buyer: buyerEmail,
+      });
+
+      await newOrder.save();
+      console.log("✅ Order saved to DB from webhook");
+    } catch (err) {
+      console.error("❌ Error saving order from webhook:", err);
+    }
+  }
+
+  res.status(200).json({ received: true });
 };

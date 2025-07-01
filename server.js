@@ -26,6 +26,12 @@ const __dirname = path.dirname(__filename);
 //rest object
 const app = express();
 
+// Stripe webhook needs raw body
+app.use(
+  "/api/v1/product/stripe-webhook",
+  express.raw({ type: "application/json" })
+);
+
 //middelwares
 app.use(cors());
 app.use(express.json());

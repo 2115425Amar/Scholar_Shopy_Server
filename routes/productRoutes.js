@@ -14,7 +14,8 @@ import {
   updateProductController,
   // braintreeTokenController,
   // brainTreePaymentController,
-  stripePaymentController
+  stripePaymentController,
+  stripeWebhookController,
 } from "../controllers/productController.js";
 
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
@@ -62,6 +63,6 @@ router.get("/product-category/:slug", productCategoryController);
 
 
 router.post("/payment", requireSignIn, stripePaymentController);
-
+router.post("/stripe-webhook", stripeWebhookController);
 
 export default router;
