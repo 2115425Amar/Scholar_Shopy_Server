@@ -46,14 +46,17 @@ app.use("/api/v1/product", productRoutes);
 // console.log(emailRoute);
 // app.use("/api/v1/email", emailRoute);
 
-// //rest api
-// app.get("/", (req, res) => {
-//   res.send("<h1>Welcome to scholarshoppy</h1>");
-// });
+// Optional: Health Check
+app.get("/", (req, res) => {
+  res.send("🚀 MERN backend is live on Azure!");
+});
+
 
 // app.use('*',function(req,res){
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // })
+
+
 
 //PORT
 const PORT = process.env.PORT || 8080;
