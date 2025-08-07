@@ -38,7 +38,6 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, './client/build')))
 
-
 //routes    authRoutes from "./routes/authRoute.js"
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/category", categoryRoutes);
@@ -48,14 +47,13 @@ app.use("/api/v1/product", productRoutes);
 
 // Optional: Health Check
 app.get("/", (req, res) => {
-  res.send("🚀 MERN backend is live on Azure!");
+  res.send("MERN backend is live on Azure!");
 });
 
 
 // app.use('*',function(req,res){
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // })
-
 
 
 //PORT

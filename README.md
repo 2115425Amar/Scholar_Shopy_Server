@@ -7,19 +7,31 @@
 
 ## Features
 
-![alt text](ss/E0.png)
-![alt text](ss/E2.png)
-![alt text](ss/E3.png)
-![alt text](ss/E4.png)
-![alt text](ss/E5.png)
+<!-- ![alt text](ss/E0.png) -->
+<!-- ![alt text](ss/E2.png) -->
+![alt text](ss/register.png)
+![alt text](ss/login.png)
+
+![alt text](ss/E1.png)
+![alt text](ss/E15.png)
+![alt text](ss/E16.png)
+
+
+<!-- ![alt text](ss/E3.png) -->
+<!-- ![alt text](ss/E4.png) -->
+<!-- ![alt text](ss/E5.png) -->
 ![alt text](ss/E6.png)
 ![alt text](ss/E7.png)
-![alt text](ss/E8.png)
-![alt text](ss/E9.png)
-![alt text](ss/E10.png)
+<!-- ![alt text](ss/E8.png) -->
+<!-- ![alt text](ss/E9.png) -->
+<!-- ![alt text](ss/E10.png) -->
+![alt text](ss/productlist.png)
+![alt text](ss/cat.png)
 ![alt text](ss/E12.png)
-![alt text](ss/E13.png)
-![alt text](ss/E14.png)
+![alt text](ss/cart.png)
+![alt text](ss/payment.png)
+<!-- ![alt text](ss/E13.png) -->
+<!-- ![alt text](ss/E14.png) -->
 
 
 ### User Authentication and Security
